@@ -16,7 +16,7 @@
 <script src="js/spy.js"></script>
 </head>
 <body>
-	<div class="container" id="how">
+	<div class="container" id="how" style="margin-top: 80px">
 		<div class="row" style="margin-bottom: 50px">
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
 				<h1>Qixin Spy Tool</h1>
