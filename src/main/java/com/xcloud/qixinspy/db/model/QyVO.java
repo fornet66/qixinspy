@@ -2,6 +2,8 @@ package com.xcloud.qixinspy.db.model;
 
 import java.util.Date;
 
+import com.google.gson.Gson;
+
 public class QyVO {
 
     private String uuid;
@@ -138,6 +140,11 @@ public class QyVO {
 
     public void setJyfw(String jyfw) {
         this.jyfw = jyfw;
+    }
+
+    public String toString() {
+        Gson gson = new Gson();
+        return gson.toJson(this).toString();
     }
 
 }
