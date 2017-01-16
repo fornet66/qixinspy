@@ -38,6 +38,9 @@
 
   <tx:annotation-driven transaction-manager="transactionManager" />
 
+  <bean id="spyConfig" class="com.xcloud.qixinspy.SpyConfig">
+    <property name="userAgent" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36" />
+  </bean>
 	<bean id="qyDao" class="com.xcloud.qixinspy.db.dao.QyDao" />
   <bean id="basicInfoParser" class="com.xcloud.qixinspy.BasicInfoParser" />
 
