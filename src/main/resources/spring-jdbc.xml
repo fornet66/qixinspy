@@ -40,8 +40,12 @@
 
   <bean id="spyConfig" class="com.xcloud.qixinspy.SpyConfig">
     <property name="userAgent" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36" />
+    <property name="driverPath" value="/Users/xienan/Desktop/chromedriver" />
   </bean>
 	<bean id="qyDao" class="com.xcloud.qixinspy.db.dao.QyDao" />
-  <bean id="basicInfoParser" class="com.xcloud.qixinspy.BasicInfoParser" />
+  <bean id="basicParser" class="com.xcloud.qixinspy.parser.BasicParser" />
+  <bean id="riskParser" class="com.xcloud.qixinspy.parser.RiskParser" />
+  <bean id="abilityParser" class="com.xcloud.qixinspy.parser.AbilityParser" />
+  <bean id="operationParser" class="com.xcloud.qixinspy.parser.OperationParser" />
 
 </beans>

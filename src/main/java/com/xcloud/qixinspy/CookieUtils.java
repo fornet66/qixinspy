@@ -9,7 +9,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-public class CookieParser {
+public class CookieUtils {
 
     public static List<Cookie> parse(String json) {
         List<Cookie> cookies = new ArrayList<Cookie>();

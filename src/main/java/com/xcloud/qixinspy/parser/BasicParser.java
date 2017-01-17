@@ -1,4 +1,4 @@
-package com.xcloud.qixinspy;
+package com.xcloud.qixinspy.parser;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,15 +12,18 @@ import com.xcloud.qixinspy.db.dao.QyDao;
 import com.xcloud.qixinspy.db.model.QyVO;
 
 @Transactional
-public class BasicInfoParser {
+public class BasicParser {
 
     @Autowired
     private QyDao qyDao;
 
-    public String parse(String uuid, String name, WebDriver driver) {
+    public String parse(String uuid, WebDriver driver) {
         QyVO vo = new QyVO();
         vo.setUuid(uuid);
-        vo.setQymc(name);
+        vo.setQymc(driver
+                .findElement(By.cssSelector(
+                        "body > div.company.with-min-height > div.container > div.col-xs-9.company-right > div.section.company-info.clearfix > div.company-summary > div.company-name > h1 > span.company-name-now"))
+                .getText());
         vo.setZjh(driver
                 .findElement(By.cssSelector(
                         "#info > div:last-child > div.panel.panel-default.basic-info > div > table > tbody > tr:nth-child(2) > td:nth-child(2)"))

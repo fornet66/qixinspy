@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import com.xcloud.qixinspy.parser.BasicParser;
+
 public class App {
 
     public static void main(String[] args) {
@@ -26,8 +28,8 @@ public class App {
             System.out.println(zzjgdm);
             System.out.println(zyzt);
             System.out.println(gslx);
-            BasicInfoParser parser = new BasicInfoParser();
-            parser.parse(uuid, "杭州云嘉云计算有限公司", driver);
+            BasicParser parser = new BasicParser();
+            parser.parse(uuid, driver);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

@@ -11,8 +11,14 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class ChromeRemoteDriver {
 
-    public static void main(String[] args) throws MalformedURLException {
-        URL serverurl = new URL("http://127.0.0.1:9515");
+    public static void main(String[] args) {
+        URL serverurl = null;
+        try {
+            serverurl = new URL("http://127.0.0.1:9515");
+        } catch (MalformedURLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         WebDriver driver = new RemoteWebDriver(serverurl, capabilities);
         driver.get("http://www.google.com");
