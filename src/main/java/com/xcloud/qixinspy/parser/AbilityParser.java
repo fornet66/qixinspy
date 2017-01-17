@@ -5,7 +5,9 @@ import java.util.NoSuchElementException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 public class AbilityParser {
 
     public String parse(String uuid, WebDriver driver) {

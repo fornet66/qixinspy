@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.xcloud.qixinspy.db.dao.QyDao;
 import com.xcloud.qixinspy.db.model.QyVO;
+import com.xcloud.qixinspy.db.model.QygdxxVO;
 
 @Transactional
 public class BasicParser {
@@ -18,6 +19,12 @@ public class BasicParser {
     private QyDao qyDao;
 
     public String parse(String uuid, WebDriver driver) {
+        StringBuffer sb = new StringBuffer();
+        sb.append(parseQy(uuid, driver));
+        return sb.toString();
+    }
+
+    public String parseQy(String uuid, WebDriver driver) {
         QyVO vo = new QyVO();
         vo.setUuid(uuid);
         vo.setQymc(driver
@@ -84,6 +91,11 @@ public class BasicParser {
                 .getText());
         qyDao.deleteById(vo);
         qyDao.insert(vo);
+        return vo.toString();
+    }
+
+    public String parseGdxx(String uuid, WebDriver driver) {
+        QygdxxVO vo = new QygdxxVO();
         return vo.toString();
     }
 
