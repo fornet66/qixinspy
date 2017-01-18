@@ -21,10 +21,19 @@ var opts = {
 , position: 'absolute' // Element positioning
 };
 var spinner = new Spinner(opts);
+var result;
 $(document).ready(function() {
 	$("#go").click(function() {
 		var cookies = $('#cookies').val();
 		var company = $('#company').val();
+		if (cookies === '') {
+			$.notify("please input cookies", "error");
+			return;
+		}
+		if (company === '') {
+			$.notify("please input company", "error");
+			return;
+		}
 		spy(cookies, company);
 	});
 });
@@ -44,10 +53,18 @@ function spy(cookies, company) {
 		contentType : "application/json",
 		data : cookies,
 		success : function(data) {
-			alert(data);
+			$('#resultModal').modal('show');
+			result = JSON.stringify(data);
+			$('#resultModal').find('.modal-body textarea').readOnly = true;
 		},
 		error : function() {
 			$.notify("spy error", "error");
 		}
 	});
+}
+
+function showResult() {
+	$('#resultModal').find('.modal-body textarea').val('aaabbbcccddd');
+	$('#resultModal').find('.modal-body textarea').readOnly = true;
+	$('#resultModal').modal('show');
 }

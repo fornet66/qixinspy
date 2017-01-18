@@ -40,7 +40,7 @@ public class SpyController {
     public String spy(@PathVariable String company, @RequestBody String json) {
         WebDriver driver = null;
         try {
-            System.setProperty("webdriver.chrome.driver", spyConfig.getBinPath());
+            System.setProperty("webdriver.chrome.driver", spyConfig.getDriverPath());
             //ChromeOptions options = new ChromeOptions();
             //options.setBinary(spyConfig.getBinPath());
             driver = new ChromeDriver();
@@ -72,9 +72,9 @@ public class SpyController {
             String uuid = driver.findElement(By.xpath("//*[@id=\"eidHidden\"]")).getAttribute("value");
             StringBuffer sb = new StringBuffer();;
             sb.append(basicParser.parse(uuid, driver));
-            sb.append(riskParser.parse(uuid, driver));
-            sb.append(abilityParser.parse(uuid, driver));
-            sb.append(operationParser.parse(uuid, driver));
+//            sb.append(riskParser.parse(uuid, driver));
+//            sb.append(abilityParser.parse(uuid, driver));
+//            sb.append(operationParser.parse(uuid, driver));
             return sb.toString();
         } catch (Exception e) {
             e.printStackTrace();

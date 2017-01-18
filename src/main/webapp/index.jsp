@@ -19,7 +19,10 @@
 	<div class="container" id="how" style="margin-top: 80px">
 		<div class="row" style="margin-bottom: 50px">
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-				<h1>Qixin Spy Tool</h1>
+				<span>Qixin Spy Tool</span>
+				<button class="btn btn-danger"
+					style="margin-bottom: 15px; margin-left: 15px;"
+					onClick="showResult();">Check</button>
 			</div>
 		</div>
 		<div id="loading"></div>
@@ -80,6 +83,28 @@
 					<div class="modal-footer">
 						<p align="center">
 							<button type="button" class="btn btn-danger" data-dismiss="modal">Submit</button>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="resultModal" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span>×</span>
+						</button>
+						<h4 class="modal-title">Qixin Spy Success</h4>
+					</div>
+					<div class="modal-body">
+						<p align="center">
+							<textarea class="form-control spyinput" id="result" rows="20"></textarea>
+						</p>
+					</div>
+					<div class="modal-footer">
+						<p align="center">
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 						</p>
 					</div>
 				</div>
