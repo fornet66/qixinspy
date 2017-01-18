@@ -21,7 +21,7 @@ var opts = {
 , position: 'absolute' // Element positioning
 };
 var spinner = new Spinner(opts);
-var result;
+var result = '';
 $(document).ready(function() {
 	$("#go").click(function() {
 		var cookies = $('#cookies').val();
@@ -45,6 +45,7 @@ function getBasePath() {
 }
 
 function spy(cookies, company) {
+	result = '';
 	var url = getBasePath() + "/spy.do/" + company;
 	$.ajax({
 		url : url,
@@ -52,19 +53,23 @@ function spy(cookies, company) {
 		dataType : "json",
 		contentType : "application/json",
 		data : cookies,
+		beforeSend : function() {
+			var target = document.getElementById('loading');
+			spinner.spin(target);
+		},
 		success : function(data) {
-			$('#resultModal').modal('show');
+			spinner.spin();
 			result = JSON.stringify(data);
-			$('#resultModal').find('.modal-body textarea').readOnly = true;
+			showResult();
 		},
 		error : function() {
+			spinner.spin();
 			$.notify("spy error", "error");
 		}
 	});
 }
 
 function showResult() {
-	$('#resultModal').find('.modal-body textarea').val('aaabbbcccddd');
-	$('#resultModal').find('.modal-body textarea').readOnly = true;
+	$('#resultModal').find('.modal-body textarea').val(result);
 	$('#resultModal').modal('show');
 }

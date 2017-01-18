@@ -35,14 +35,14 @@ public class SpyController {
     @Autowired
     private OperationParser operationParser;
 
-    @RequestMapping(value = "/spy.do/{company}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/spy.do/{company}", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
     public String spy(@PathVariable String company, @RequestBody String json) {
         WebDriver driver = null;
         try {
             System.setProperty("webdriver.chrome.driver", spyConfig.getDriverPath());
-            //ChromeOptions options = new ChromeOptions();
-            //options.setBinary(spyConfig.getBinPath());
+            // ChromeOptions options = new ChromeOptions();
+            // options.setBinary(spyConfig.getBinPath());
             driver = new ChromeDriver();
             driver.get("http://www.qixin.com/");
             driver.manage().window().maximize();
@@ -62,19 +62,22 @@ public class SpyController {
             element = driver.findElement(By.linkText(company));
             String url = element.getAttribute("href");
             driver.get(url);
-//            Set<String> allWindowsId = driver.getWindowHandles();
-//            for (String windowId : allWindowsId) {
-//                if (driver.switchTo().window(windowId).getTitle().contains("工商信息")) {
-//                    driver.switchTo().window(windowId);
-//                    break;
-//                }
-//            }
+            // Set<String> allWindowsId = driver.getWindowHandles();
+            // for (String windowId : allWindowsId) {
+            // if
+            // (driver.switchTo().window(windowId).getTitle().contains("工商信息"))
+            // {
+            // driver.switchTo().window(windowId);
+            // break;
+            // }
+            // }
             String uuid = driver.findElement(By.xpath("//*[@id=\"eidHidden\"]")).getAttribute("value");
-            StringBuffer sb = new StringBuffer();;
+            StringBuffer sb = new StringBuffer();
+            ;
             sb.append(basicParser.parse(uuid, driver));
-//            sb.append(riskParser.parse(uuid, driver));
-//            sb.append(abilityParser.parse(uuid, driver));
-//            sb.append(operationParser.parse(uuid, driver));
+            // sb.append(riskParser.parse(uuid, driver));
+            // sb.append(abilityParser.parse(uuid, driver));
+            // sb.append(operationParser.parse(uuid, driver));
             return sb.toString();
         } catch (Exception e) {
             e.printStackTrace();

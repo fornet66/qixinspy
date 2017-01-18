@@ -25,7 +25,6 @@
 					onClick="showResult();">Check</button>
 			</div>
 		</div>
-		<div id="loading"></div>
 		<div class="row mt text-center" style="margin-bottom: 20px">
 			<div class="col-sm-4 click" data-toggle="modal"
 				data-target="#cookiesModal">
@@ -42,6 +41,7 @@
 				<h3 style="font-weight: bold;">3. Let's go</h3>
 			</div>
 		</div>
+		<div id="loading"></div>
 
 		<div class="modal fade" id="cookiesModal" role="dialog">
 			<div class="modal-dialog">
@@ -99,7 +99,7 @@
 					</div>
 					<div class="modal-body">
 						<p align="center">
-							<textarea class="form-control spyinput" id="result" rows="20"></textarea>
+							<textarea class="form-control spyinput" id="result" rows="15"></textarea>
 						</p>
 					</div>
 					<div class="modal-footer">
