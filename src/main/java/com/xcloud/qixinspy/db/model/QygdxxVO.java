@@ -1,5 +1,7 @@
 package com.xcloud.qixinspy.db.model;
 
+import com.google.gson.Gson;
+
 public class QygdxxVO {
 
     private String zjh;// 证件号
@@ -46,6 +48,11 @@ public class QygdxxVO {
 
     public void setSjcz(String sjcz) {
         this.sjcz = sjcz;
+    }
+
+    public String toString() {
+        Gson gson = new Gson();
+        return gson.toJson(this).toString();
     }
 
 }

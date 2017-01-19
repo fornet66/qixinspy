@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class RiskParser {
 
-    public String parse(String uuid, WebDriver driver) {
+    public String parse(String zjh, WebDriver driver) {
         try {
             WebElement element = driver.findElement(By.xpath("//*[@id=\"mainTab\"]/li[2]/a"));
             element.click();

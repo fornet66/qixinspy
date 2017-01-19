@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class AbilityParser {
 
-    public String parse(String uuid, WebDriver driver) {
+    public String parse(String zjh, WebDriver driver) {
         try {
             WebElement element = driver.findElement(By.xpath("//*[@id=\"mainTab\"]/li[3]/a"));
             element.click();

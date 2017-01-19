@@ -10,19 +10,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.xcloud.qixinspy.db.dao.QyDao;
 import com.xcloud.qixinspy.db.model.QyVO;
+import com.xcloud.qixinspy.db.model.QyfzjgVO;
 import com.xcloud.qixinspy.db.model.QygdxxVO;
+import com.xcloud.qixinspy.db.model.QyzyryVO;
 
 @Transactional
 public class BasicParser {
 
     @Autowired
     private QyDao qyDao;
-
-    public String parse(String uuid, WebDriver driver) {
-        StringBuffer sb = new StringBuffer();
-        sb.append(parseQy(uuid, driver));
-        return sb.toString();
-    }
 
     public String parseQy(String uuid, WebDriver driver) {
         QyVO vo = new QyVO();
@@ -94,8 +90,18 @@ public class BasicParser {
         return vo.toString();
     }
 
-    public String parseGdxx(String uuid, WebDriver driver) {
+    public String parseQygdxx(String zjh, WebDriver driver) {
         QygdxxVO vo = new QygdxxVO();
+        return vo.toString();
+    }
+
+    public String parseQyzyry(String zjh, WebDriver driver) {
+        QyzyryVO vo = new QyzyryVO();
+        return vo.toString();
+    }
+
+    public String parseQyfzjg(String zjh, WebDriver driver) {
+        QyfzjgVO vo = new QyfzjgVO();
         return vo.toString();
     }
 

@@ -8,7 +8,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -53,12 +52,6 @@ public class SpyController {
             WebElement element = driver.findElement(By.id("searchBar"));
             element.sendKeys(company);
             element.submit();
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
             element = driver.findElement(By.linkText(company));
             String url = element.getAttribute("href");
             driver.get(url);
@@ -72,12 +65,18 @@ public class SpyController {
             // }
             // }
             String uuid = driver.findElement(By.xpath("//*[@id=\"eidHidden\"]")).getAttribute("value");
+            String zjh = driver
+                    .findElement(By.cssSelector(
+                            "#info > div:last-child > div.panel.panel-default.basic-info > div > table > tbody > tr:nth-child(2) > td:nth-child(2)"))
+                    .getText();
             StringBuffer sb = new StringBuffer();
-            ;
-            sb.append(basicParser.parse(uuid, driver));
-            // sb.append(riskParser.parse(uuid, driver));
-            // sb.append(abilityParser.parse(uuid, driver));
-            // sb.append(operationParser.parse(uuid, driver));
+            sb.append(basicParser.parseQy(uuid, driver));
+            sb.append(basicParser.parseQygdxx(zjh, driver));
+            sb.append(basicParser.parseQyzyry(zjh, driver));
+            sb.append(basicParser.parseQyfzjg(zjh, driver));
+            sb.append(riskParser.parse(zjh, driver));
+            sb.append(abilityParser.parse(zjh, driver));
+            sb.append(operationParser.parse(zjh, driver));
             return sb.toString();
         } catch (Exception e) {
             e.printStackTrace();

@@ -29,7 +29,7 @@ public class App {
             System.out.println(zyzt);
             System.out.println(gslx);
             BasicParser parser = new BasicParser();
-            parser.parse(uuid, driver);
+            parser.parseQy(uuid, driver);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
